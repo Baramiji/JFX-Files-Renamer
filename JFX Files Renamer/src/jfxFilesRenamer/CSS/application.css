@@ -1,0 +1,20 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.red-column.table-cell {
+    -fx-padding: 0.5em;
+    -fx-border-color: transparent -fx-box-border transparent transparent;
+    -fx-font: 13px "Arial";
+    -fx-text-fill: red;
+}
+
+
+.HighlightErrors {
+    -fx-background-color: #ed7e65;
+    -fx-font-family: "Noto Sans";
+    -fx-font-size: 10pt;
+    -fx-font-style: normal;
+    -fx-font-weight: normal;
+    -fx-text-fill: black;
+}
+
+

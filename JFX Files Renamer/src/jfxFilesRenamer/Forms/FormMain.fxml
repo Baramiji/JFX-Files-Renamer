@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1026.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jfxFilesRenamer.Forms.ControllerMain">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="1.0" prefWidth="1026.0" spacing="10.0">
+               <children>
+                  <Button fx:id="BTN_AddFiles" mnemonicParsing="false" text="Add Files" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Button fx:id="BTN_ScanFolder" mnemonicParsing="false" text="Scan Folder" />
+                  <CheckBox fx:id="CheckBox_ScanSubFolders" mnemonicParsing="false" selected="true" text="Subdirectories" />
+                  <Separator layoutX="108.0" layoutY="15.0" orientation="VERTICAL" prefHeight="200.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin></Separator>
+                  <Button fx:id="BTN_Apply" layoutX="124.0" layoutY="15.0" mnemonicParsing="false" text="Apply Rename" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="12.0" left="10.0" top="7.0" />
+               </padding>
+            </HBox>
+            <TableView fx:id="TableView_Files" prefHeight="314.0" prefWidth="797.0" VBox.vgrow="ALWAYS">
+              <columns>
+                  <TableColumn fx:id="col_ID" editable="false" prefWidth="101.0" text="ID" visible="false" />
+                <TableColumn fx:id="col_OriginalName" editable="false" prefWidth="101.0" text="Original" />
+                  <TableColumn fx:id="col_OriginalNameWithoutExt" editable="false" prefWidth="101.0" text="Original Without Extension" visible="false" />
+                <TableColumn fx:id="col_RenamedNane" editable="false" prefWidth="87.0" text="Renamed" />
+                  <TableColumn fx:id="col_Status" editable="false" prefWidth="87.0" text="Status" />
+                  <TableColumn fx:id="col_ParentFolder" editable="false" prefWidth="136.0" text="Parent Path" />
+                  <TableColumn fx:id="col_Extension" editable="false" prefWidth="112.0" text="Extension" visible="false" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <TabPane fx:id="TabPane_Controls" prefHeight="265.0" prefWidth="1026.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Replace">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="5.0" layoutY="5.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <VBox prefHeight="203.0" prefWidth="753.0" spacing="5.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="78.0" style="-fx-font-weight: Bold;" text="Find       :" />
+                                                <TextField fx:id="TF_ReplaceFind" minWidth="200.0" prefHeight="26.0" prefWidth="488.0" promptText="You can use Regex" />
+                                                <CheckBox fx:id="CheckBox_ReplaceRegex" mnemonicParsing="false" text="Regex" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="78.0" style="-fx-font-weight: Bold;" text="Replace :" />
+                                                <TextField fx:id="TF_ReplaceWith" minWidth="200.0" prefHeight="26.0" prefWidth="488.0" />
+                                                <CheckBox fx:id="CheckBox_ReplaceCaseSensitive" mnemonicParsing="false" text="Case sensitive" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="44.0" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="183.0" style="-fx-font-weight: Bold;" text="Letters case                :" />
+                                                <ChoiceBox fx:id="ChoiceBox_LettersCase" prefHeight="26.0" prefWidth="236.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="15.0" layoutY="83.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="96.0" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="183.0" style="-fx-font-weight: Bold;" text="Multiple occurrences  :" />
+                                                <TextField fx:id="TF_ReplaceMultipleOccurrences" alignment="CENTER" maxWidth="378.0" minWidth="39.0" prefHeight="26.0" prefWidth="39.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="15.0" layoutY="130.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="96.0" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="183.0" style="-fx-font-weight: Bold;" text="Miscellaneous             :" />
+                                                <ChoiceBox fx:id="ChoiceBox_ReplaceMiscellaneous" prefHeight="26.0" prefWidth="235.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                       <children>
+                                          <Button fx:id="BTN_ReplaceText" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Replace">
+                                             <VBox.margin>
+                                                <Insets bottom="31.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Separator prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_ReplaceLettersCase" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Replace" />
+                                          <Separator layoutX="10.0" layoutY="114.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_ReplaceMultipleOccurrences" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Replace" />
+                                          <Separator layoutX="10.0" layoutY="119.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_ReplaceMiscellaneous" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Replace" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Insert">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="1026.0">
+                           <children>
+                              <VBox layoutX="5.0" layoutY="14.0" spacing="7.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                       <children>
+                                          <Label maxWidth="173.0" minWidth="62.0" prefHeight="16.0" prefWidth="122.0" style="-fx-font-weight: Bold;" text="Insertion at:" />
+                                          <RadioButton fx:id="RB_InsertAtBegin" mnemonicParsing="false" text="Begin" textFill="#2b19b9" />
+                                          <RadioButton fx:id="RB_InsertAtEnd" layoutX="584.0" layoutY="14.0" mnemonicParsing="false" text="End" textFill="#2b19b9" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="15.0" maxWidth="146.0" minWidth="24.0" prefHeight="16.0" prefWidth="24.0" style="-fx-font-weight: Bold;" text="Or" textFill="#c92222" />
+                                          <RadioButton fx:id="RB_InsertAtPosition" layoutX="219.0" layoutY="14.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="86.0" text="Position" textFill="#2b19b9" />
+                                          <Spinner fx:id="Spin_InsertAtPosition" prefHeight="26.0" prefWidth="93.0" />
+                                          <Separator orientation="VERTICAL" prefHeight="200.0">
+                                             <HBox.margin>
+                                                <Insets left="13.0" right="13.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <Label prefHeight="16.0" prefWidth="84.0" text="Separator" textFill="#2b19b9">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <ChoiceBox fx:id="ChoiceBox_InsertSeparator" prefHeight="26.0" prefWidth="79.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox fx:id="HBox_Insert" spacing="5.0">
+                                       <children>
+                                          <VBox prefHeight="145.0" prefWidth="726.0" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" text="Text          :" />
+                                                      <TextField fx:id="TF_InsertText" minWidth="346.0" prefHeight="26.0" prefWidth="564.0" HBox.hgrow="ALWAYS" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <Separator prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" top="1.0" />
+                                                   </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" text="Counter    :" />
+                                                      <Label prefHeight="16.0" prefWidth="43.0" text="Start" textFill="#2b19b9">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Spinner fx:id="Spin_InsertCounterStart" prefHeight="26.0" prefWidth="90.0" />
+                                                      <Label layoutX="15.0" layoutY="15.0" prefHeight="16.0" prefWidth="110.0" text="Leading Zeros" textFill="#2b19b9">
+                                                         <HBox.margin>
+                                                            <Insets left="26.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Spinner fx:id="Spin_InsertCounterFormat" layoutX="133.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" />
+                                                      <Label prefHeight="16.0" prefWidth="86.0" text="Step Value" textFill="#2b19b9">
+                                                         <HBox.margin>
+                                                            <Insets left="26.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Spinner fx:id="Spin_InsertCounterIncrementStep" prefHeight="26.0" prefWidth="67.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="51.0" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" />
+                                                      <CheckBox fx:id="CheckBox_InsertResetCounterFolder" mnemonicParsing="false" selected="true" text="Reset for each folder">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox />
+                                                <Separator layoutX="50.0" layoutY="46.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" top="1.0" />
+                                                   </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" text="Date         :" />
+                                                      <ChoiceBox fx:id="ChoiceBox_InsertMiscellaneous" prefHeight="26.0" prefWidth="191.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="40.0" right="5.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <Button fx:id="BTN_InsertText" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Insert" />
+                                                <Separator prefWidth="100.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" top="1.0" />
+                                                   </padding>
+                                                </Separator>
+                                                <Button fx:id="BTN_InsertNumber" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Insert" />
+                                                <Separator prefWidth="100.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" top="1.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets top="36.0" />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <Button fx:id="BTN_InsertMiscellaneous" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Insert" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Rename">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="1026.0">
+                           <children>
+                              <VBox layoutX="5.0" layoutY="14.0" spacing="7.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                       <children>
+                                          <Label prefHeight="16.0" prefWidth="56.0" style="-fx-font-weight: Bold;" text="Text  :" />
+                                          <TextField fx:id="TF_RenameText" minWidth="346.0" prefHeight="26.0" prefWidth="446.0" />
+                                          <Separator orientation="VERTICAL" prefHeight="200.0">
+                                             <HBox.margin>
+                                                <Insets left="4.0" right="4.0" />
+                                             </HBox.margin>
+                                          </Separator>
+                                          <Label prefHeight="16.0" prefWidth="84.0" text="Separator" textFill="#2b19b9" />
+                                          <ChoiceBox fx:id="ChoiceBox_RenameSeparator" prefHeight="26.0" prefWidth="70.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox fx:id="HBox_Insert1" spacing="5.0">
+                                       <children>
+                                          <VBox prefHeight="145.0" prefWidth="726.0" spacing="5.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" text="Counter    :" />
+                                                      <Label prefHeight="16.0" prefWidth="43.0" text="Start" textFill="#2b19b9">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Spinner fx:id="Spin_RenameCounterStart" prefHeight="26.0" prefWidth="90.0" />
+                                                      <Label layoutX="15.0" layoutY="15.0" prefHeight="16.0" prefWidth="110.0" text="Leading Zeros" textFill="#2b19b9">
+                                                         <HBox.margin>
+                                                            <Insets left="26.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Spinner fx:id="Spin_RenameCounterFormat" layoutX="133.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" />
+                                                      <Label prefHeight="16.0" prefWidth="86.0" text="Step Value" textFill="#2b19b9">
+                                                         <HBox.margin>
+                                                            <Insets left="26.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Spinner fx:id="Spin_RenameCounterIncrementStep" prefHeight="26.0" prefWidth="67.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="51.0" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" />
+                                                      <CheckBox fx:id="CheckBox_RenameResetCounterFolder" mnemonicParsing="false" selected="true" text="Reset for each folder">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <HBox />
+                                                <Separator layoutX="50.0" layoutY="46.0" prefWidth="200.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" top="1.0" />
+                                                   </padding>
+                                                </Separator>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="16.0" prefWidth="94.0" style="-fx-font-weight: Bold;" text="Date         :" />
+                                                      <ChoiceBox fx:id="ChoiceBox_RenameMiscellaneous" prefHeight="26.0" prefWidth="191.0" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </padding>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="40.0" right="5.0" />
+                                             </padding>
+                                          </VBox>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <Button fx:id="BTN_RenameNumber" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Rename" />
+                                                <Separator prefWidth="100.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" top="1.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets top="36.0" />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <Button fx:id="BTN_RenameMiscellaneous" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Rename" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Remove">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="5.0" layoutY="5.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <VBox prefHeight="235.0" prefWidth="713.0" spacing="5.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="112.0" style="-fx-font-weight: Bold;" text="Find               :" />
+                                                <TextField fx:id="TF_RemoveText" minWidth="319.0" prefHeight="26.0" prefWidth="446.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="46.0" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="112.0" style="-fx-font-weight: Bold;" text="Text               :" />
+                                                <Label layoutX="15.0" layoutY="15.0" text="Between" textFill="#2b19b9" />
+                                                <TextField fx:id="TF_RemoveTextFrom" />
+                                                <Label layoutX="15.0" layoutY="15.0" text="And" textFill="#2b19b9" />
+                                                <TextField fx:id="TF_RemoveTextTo" layoutX="204.0" layoutY="10.0" text=" " />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="10.0" layoutY="46.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="112.0" style="-fx-font-weight: Bold;" text="Position         :" />
+                                                <Label layoutX="15.0" layoutY="15.0" prefWidth="34.0" text="From" textFill="#2b19b9" />
+                                                <Spinner fx:id="Spin_RemoveFrom" prefHeight="26.0" prefWidth="91.0" />
+                                                <Label layoutX="15.0" layoutY="15.0" text="To" textFill="#2b19b9" />
+                                                <Spinner fx:id="Spin_RemoveTo" layoutX="127.0" layoutY="10.0" prefHeight="26.0" prefWidth="91.0" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="10.0" layoutY="169.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="112.0" style="-fx-font-weight: Bold;" text="Spaces           :" />
+                                                <Label prefWidth="34.0" text="Trim" textFill="#2b19b9" />
+                                                <ChoiceBox fx:id="ChoiceBox_Trims" prefWidth="150.0" />
+                                                <CheckBox fx:id="CheckBox_RemoveExtraSpaces" layoutX="346.0" layoutY="14.0" mnemonicParsing="false" text="Extra spaces " textFill="#2b19b9">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin></CheckBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="10.0" layoutY="123.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="133.0" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefHeight="16.0" prefWidth="112.0" style="-fx-font-weight: Bold;" text="Brackets        :" />
+                                                <ChoiceBox fx:id="ChoiceBox_Brackets" prefHeight="26.0" prefWidth="77.0" />
+                                                <CheckBox fx:id="CheckBox_RemoveTextWithinBrackets" mnemonicParsing="false" text="Delete also the text within" textFill="#2b19b9">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin></CheckBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets right="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Button fx:id="BTN_RemoveText" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
+                                          <Separator prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_RemoveTextBetween" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
+                                          <Separator layoutX="15.0" layoutY="46.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_RemovePosition" layoutX="15.0" layoutY="46.0" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
+                                          <Separator layoutX="15.0" layoutY="169.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_RemoveExtraSpaces" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Remove" />
+                                          <Separator layoutX="15.0" layoutY="123.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_RemoveBrackets" layoutX="15.0" layoutY="133.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Remove" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Extensions">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="5.0" layoutY="5.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <children>
+                                    <VBox prefHeight="149.0" prefWidth="607.0" spacing="5.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="103.0" style="-fx-font-weight: Bold;" text="Add           :" />
+                                                <TextField fx:id="TF_ExtAdd" maxWidth="128.0" minWidth="128.0" prefWidth="128.0" promptText="Extension" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="46.0" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="103.0" style="-fx-font-weight: Bold;" text="Replace    :" />
+                                                <CheckBox fx:id="CheckBox_ExtReplaceAll" mnemonicParsing="false" selected="true" text="All" textFill="#2b19b9" />
+                                                <TextField fx:id="TF_ExtReplace" maxWidth="128.0" minWidth="128.0" prefWidth="128.0" promptText="extension" />
+                                                <Label layoutX="15.0" layoutY="15.0" text="With" textFill="#2b19b9" />
+                                                <TextField fx:id="TF_ExtReplaceWith" layoutX="204.0" layoutY="10.0" maxWidth="128.0" minWidth="128.0" prefWidth="128.0" promptText="Extension" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="10.0" layoutY="46.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="549.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="103.0" style="-fx-font-weight: Bold;" text="Remove    :" />
+                                                <CheckBox fx:id="CheckBox_ExtRemoveAll" mnemonicParsing="false" selected="true" text="All" textFill="#2b19b9" />
+                                                <TextField fx:id="TF_ExtRemove" maxWidth="128.0" minWidth="128.0" prefWidth="128.0" promptText="extension" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <Separator layoutX="10.0" layoutY="169.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="437.0" spacing="10.0">
+                                             <children>
+                                                <Label prefWidth="103.0" style="-fx-font-weight: Bold;" text="Capitalize :" />
+                                                <RadioButton fx:id="RB_ExtUppercase" mnemonicParsing="false" text="Uppercase" textFill="#2b19b9" />
+                                                <RadioButton fx:id="RB_ExtLowercase" mnemonicParsing="false" text="Lowercase" textFill="#2b19b9" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets right="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <Button fx:id="BTN_ExtAdd" mnemonicParsing="false" prefWidth="100.0" text="Add" />
+                                          <Separator layoutX="15.0" layoutY="72.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_ExtReplace" mnemonicParsing="false" prefWidth="100.0" text="Replace" />
+                                          <Separator layoutX="15.0" layoutY="169.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_ExtRemove" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Remove" />
+                                          <Separator layoutX="15.0" layoutY="82.0" prefWidth="100.0">
+                                             <padding>
+                                                <Insets bottom="1.0" top="1.0" />
+                                             </padding>
+                                          </Separator>
+                                          <Button fx:id="BTN_ExtLettersCase" layoutX="15.0" layoutY="92.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Change" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <HBox>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </VBox.margin>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="Label_Status" prefHeight="16.0" prefWidth="249.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox prefHeight="18.0" prefWidth="1021.0" spacing="10.0" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" top="5.0" />
+         </BorderPane.margin>
+         <children>
+            <MenuBar HBox.hgrow="ALWAYS">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="MenuItem_Exit" mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="MenuItem_About" mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
